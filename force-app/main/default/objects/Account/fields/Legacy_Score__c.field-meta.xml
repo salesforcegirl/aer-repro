@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legacy_Score__c</fullName>
+    <label>Legacy Score</label>
+    <formula>(BLANKVALUE(Legacy_Touch_Count__c, 0) * 7 + LEN(Name) + BLANKVALUE(Legacy_Contact_Count__c, 0) * 3.5)
+/ IF(BLANKVALUE(NumberOfEmployees, 0) = 0, 1, NumberOfEmployees)
++ VALUE(IF(ISNUMBER(RIGHT(Name, 1)), RIGHT(Name, 1), '0'))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <precision>18</precision>
+    <scale>2</scale>
+    <type>Number</type>
+</CustomField>

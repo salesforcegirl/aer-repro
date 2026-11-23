@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legacy_Tier__c</fullName>
+    <label>Legacy Tier</label>
+    <formula>IF(ISBLANK(Parent.Name),
+  CASE(TEXT(Industry),
+    'Banking', 'Gold',
+    'Retail', IF(Legacy_Contact_Count__c > 2, 'Silver', 'Bronze'),
+    IF(AnnualRevenue > 1000000, 'Gold',
+      IF(NumberOfEmployees > 50, 'Silver',
+        IF(LEN(Name) > 20, 'Long Name Tier', 'Bronze')))),
+  'Child of ' &amp; Parent.Name &amp; IF(ISBLANK(Parent.Parent.Name), '', ' / ' &amp; Parent.Parent.Name))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <type>Text</type>
+</CustomField>

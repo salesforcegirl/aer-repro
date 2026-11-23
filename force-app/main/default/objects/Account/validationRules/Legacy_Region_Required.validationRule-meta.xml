@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legacy_Region_Required</fullName>
+    <active>true</active>
+    <description>Added in a later project. Existing tests and older code were not updated.</description>
+    <errorConditionFormula>AND(BEGINS(Name, 'LEGACY'), ISBLANK(Legacy_Region__c), NOT($Setup.Legacy_Bypass__c.Skip_Validation__c))</errorConditionFormula>
+    <errorDisplayField>Legacy_Region__c</errorDisplayField>
+    <errorMessage>Region is required.</errorMessage>
+</ValidationRule>
