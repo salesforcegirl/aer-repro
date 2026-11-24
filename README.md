@@ -1,8 +1,8 @@
 # aer repro: flow limit exception, and CPU on a save-heavy Account
 
 Two differences between aer and a Salesforce org, cut down from a larger
-set of probes. Measured 23 Nov 2026 on aer v1.6.21, against a Developer
-edition scratch org with the same source deployed. Org tests ran
+set of probes. Measured 23 Nov 2026 on aer v1.6.21, against an Enterprise
+edition scratch org (instance USA1154S) with the same source deployed. Org tests ran
 synchronously, one class at a time.
 
 ## Results
@@ -54,9 +54,10 @@ The org CPU figures were measured on 21 Nov. The aer figures are from v1.6.21;
 v1.6.20 gave the same CPU. SOQL, DML and rows match exactly on v1.6.21.
 
 For contrast, a pure integer loop (not in this repo) runs 1,803,000
-iterations in 9 s of aer CPU, against 4.4–5.1 million in the org. So aer
-charges more than the org for integer math, and almost nothing for DML,
-SOQL, triggers and flows.
+iterations in 9 s of aer CPU. The same loop in the same org gave 4.4–5.1
+million on 21 Nov and 2.7–2.9 million on 24 Nov, so the org's rate moves
+by day or pod. Either way, aer charges more than the org for integer math,
+and almost nothing for DML, SOQL, triggers and flows.
 
 ## Notes
 
